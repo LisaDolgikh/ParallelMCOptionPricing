@@ -16,8 +16,8 @@
 
 ## Требования к сборке
 
-* Компилятор с поддержкой C++20 (GCC 10+, Clang 10+, MSVC 2019 16.10+).
-* CMake версии 3.20 или выше.
+* Компилятор с поддержкой C++17 (GCC 7+, Clang 6+, MSVC 2017+).
+* CMake версии 3.14 или выше (для поддержки FetchContent).
 * GoogleTest (загружается автоматически через CMake).
 
 ## Инструкция по сборке и запуску
@@ -31,3 +31,28 @@ cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build .
 ./OptionPricer
+```
+
+Windows (PowerShell):
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build . --config Release
+.\Release\OptionPricer.exe
+```
+
+## Тестирование
+Для запуска unit-тестов (проверка паритета пут-колл, сходимость Монте-Карло, точность аналитической формулы):
+```bash
+cd build
+ctest --output-on-failure
+```
+
+## Структура проекта
+
+src/ — Исходный код движка (Payoff, Analytical, MCEngine).
+
+tests/ — Unit-тесты на базе GoogleTest.
+
+main.cpp — Пример использования и замер производительности.
