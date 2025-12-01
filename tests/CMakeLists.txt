@@ -1,5 +1,8 @@
-# Создаем исполняемый файл для тестов
-add_executable(UnitTests main_test.cpp)
+add_executable(UnitTests 
+    test_analytical.cpp
+    test_validation.cpp
+    test_monte_carlo.cpp
+)
 
 # Линкуем с нашей библиотекой CoreEngine и библиотекой GTest
 target_link_libraries(UnitTests PRIVATE 
