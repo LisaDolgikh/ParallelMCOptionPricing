@@ -1,5 +1,6 @@
 #include "Analytical.hpp"
 #include "Constants.hpp"
+#include <algorithm>
 #include <cmath>
 
 namespace mcopt {
