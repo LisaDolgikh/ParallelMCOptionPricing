@@ -1,36 +1,62 @@
-cmake_minimum_required(VERSION 3.20)
-project(ParallelMCOptionPricing VERSION 1.0 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.14)
+project(ParallelMonteCarlo VERSION 1.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Флаги предупреждений (Industrial Quality)
-if(MSVC)
-    add_compile_options(/W4 /WX /permissive-)
-else()
-    add_compile_options(-Wall -Wextra -Werror -pedantic -O3 -march=native)
-endif()
+# ==========================================
+# 1. Core Library (Движок)
+# ==========================================
+add_library(CoreEngine
+    src/Payoff.cpp
+    src/Analytical.cpp
+    src/MCEngine.cpp
+    # Header files included for IDE visibility
+    src/Payoff.hpp
+    src/Analytical.hpp
+    src/MCEngine.hpp
+    src/Constants.hpp
+)
 
-# Подключение GoogleTest (через FetchContent — самый надежный способ)
+target_include_directories(CoreEngine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+find_package(Threads REQUIRED)
+target_link_libraries(CoreEngine PUBLIC Threads::Threads)
+
+# ==========================================
+# 2. Main Executable (CLI)
+# ==========================================
+add_executable(MonteCarloApp main.cpp)
+target_link_libraries(MonteCarloApp PRIVATE CoreEngine)
+
+# ==========================================
+# 3. Benchmark Executable
+# ==========================================
+add_executable(Benchmark benchmark.cpp)
+target_link_libraries(Benchmark PRIVATE CoreEngine)
+
+# ==========================================
+# 4. GoogleTest (Unit Tests)
+# ==========================================
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/refs/heads/main.zip
+  URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
 )
-# Для предотвращения установки gtest в системные папки
-set(INSTALL_GTEST OFF) 
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# Подключаем поддиректории
-add_subdirectory(src)
-add_subdirectory(tests)
+enable_testing()
 
-# Основной исполняемый файл (для демо)
-add_executable(OptionPricer main.cpp)
-target_link_libraries(OptionPricer PRIVATE CoreEngine)
+# Собираем тесты
+add_executable(UnitTests
+    tests/test_analytical.cpp
+    tests/test_validation.cpp
+    tests/test_monte_carlo.cpp
+)
 
-# Benchmark Executable
-add_executable(Benchmark benchmark.cpp)
+target_link_libraries(UnitTests PRIVATE CoreEngine GTest::gtest_main)
 
-# Линкуем с нашей библиотекой движка
-target_link_libraries(Benchmark PRIVATE CoreEngine)
+include(GoogleTest)
+gtest_discover_tests(UnitTests)

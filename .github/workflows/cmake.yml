@@ -1,0 +1,35 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    name: ${{ matrix.os }} - ${{ matrix.build_type }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        build_type: [Release] # Release для скорости (бенчмарки), Debug для отладки
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configure CMake
+      # -S . (source) -B build (build dir)
+      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+
+    - name: Build
+      # --config нужен для Windows (MSVC), где тип сборки выбирается на этапе билда
+      run: cmake --build build --config ${{ matrix.build_type }}
+
+    - name: Run Tests
+      working-directory: build
+      # ctest запускает все тесты, определенные в GoogleTest
+      # -C Release указывает конфигурацию для Windows
+      # --output-on-failure покажет логи, если что-то упадет
+      run: ctest -C ${{ matrix.build_type }} --output-on-failure

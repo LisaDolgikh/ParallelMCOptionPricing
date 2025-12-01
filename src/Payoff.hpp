@@ -3,6 +3,12 @@
 #include <algorithm> // std::max
 #include <string>
 
+/**
+ * @brief Abstract base class for option payoff strategies.
+ * * Implements the Strategy pattern. Derived classes must implement
+ * the operator() to calculate payoff based on the spot price.
+ */
+
 namespace mcopt {
 
     // Абстрактный базовый класс
