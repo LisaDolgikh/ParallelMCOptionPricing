@@ -4,6 +4,7 @@
 #include "Analytical.hpp"
 #include <memory>
 #include <vector>
+#include <thread>
 
 namespace mcopt {
 
@@ -12,14 +13,15 @@ namespace mcopt {
         MonteCarloEngine(
             std::shared_ptr<Payoff> payoff,
             double S0, double T, double r, double sigma,
-            uint64_t seed = 42 // добавили seed для воспроизводимости
+            uint64_t seed = 42
         );
 
-        // Старый метод (только цена)
-        [[nodiscard]] double calculatePrice(unsigned long long numSimulations) const;
 
-        // Новый метод (Цена + Дельта + Гамма)
+        [[nodiscard]] double calculatePrice(unsigned long long numSimulations) const;
         [[nodiscard]] Greeks calculateGreeks(unsigned long long numSimulations);
+
+        // Сеттер для ручного управления потоками (для бенчмарков)
+        void setNumThreads(unsigned int threads);
 
     private:
         std::shared_ptr<Payoff> m_payoff;
@@ -29,11 +31,14 @@ namespace mcopt {
         double m_sigma;
         uint64_t m_seed;
 
+        // Поле для хранения текущего числа потоков
+        unsigned int m_numThreads;
+
         // Внутренний метод: считает цену для конкретного Spot Price
         // Он приватный, чтобы вызывать внутри calculateGreeks с разным S
         [[nodiscard]] double runSimulationForSpot(double spot, unsigned long long numSimulations) const;
 
-        // Метод для чанка (как раньше, но теперь принимает spot аргументом)
+        // Метод для чанка
         [[nodiscard]] double runSimulationChunk(double spot, unsigned long long numPaths, unsigned long long chunkIndex) const;
     };
 

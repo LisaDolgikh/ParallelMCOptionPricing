@@ -28,3 +28,9 @@ add_subdirectory(tests)
 # Основной исполняемый файл (для демо)
 add_executable(OptionPricer main.cpp)
 target_link_libraries(OptionPricer PRIVATE CoreEngine)
+
+# Benchmark Executable
+add_executable(Benchmark benchmark.cpp)
+
+# Линкуем с нашей библиотекой движка
+target_link_libraries(Benchmark PRIVATE CoreEngine)

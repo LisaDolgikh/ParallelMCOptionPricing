@@ -20,6 +20,19 @@ namespace mcopt {
         if (m_S0 < 0.0 || m_T < 0.0 || m_sigma < 0.0) {
             throw std::invalid_argument("Invalid market parameters (S0, T, sigma must be >= 0).");
         }
+        // Инициализация: берем максимум ядер или 1, если не определилось
+        unsigned int hwThreads = std::thread::hardware_concurrency();
+        m_numThreads = (hwThreads > 0) ? hwThreads : 1;
+    }
+
+    void MonteCarloEngine::setNumThreads(unsigned int threads) {
+        if (threads == 0) {
+            // Если передали 0, сбрасываем на дефолт (hardware)
+            unsigned int hw = std::thread::hardware_concurrency();
+            m_numThreads = (hw > 0) ? hw : 1;
+        } else {
+            m_numThreads = threads;
+        }
     }
 
     // Чанк симуляции
@@ -55,8 +68,10 @@ namespace mcopt {
 
     // Обертка для запуска потоков
     double MonteCarloEngine::runSimulationForSpot(double spot, unsigned long long numSimulations) const {
-        unsigned int numThreads = std::thread::hardware_concurrency();
-        if (numThreads == 0) numThreads = 2;
+        unsigned int numThreads = m_numThreads;
+        if (numThreads == 0) numThreads = 1;
+        //unsigned int numThreads = std::thread::hardware_concurrency();
+        //if (numThreads == 0) numThreads = 2;
 
         unsigned long long pathsPerThread = numSimulations / numThreads;
         unsigned long long leftoverPaths = numSimulations % numThreads;
