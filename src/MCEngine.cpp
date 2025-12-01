@@ -11,8 +11,8 @@ namespace mcopt {
 
     MonteCarloEngine::MonteCarloEngine(
         std::shared_ptr<Payoff> payoff,
-        double S0, double T, double r, double sigma)
-        : m_payoff(std::move(payoff)), m_S0(S0), m_T(T), m_r(r), m_sigma(sigma) 
+        double S0, double T, double r, double sigma, uint64_t seed)
+        : m_payoff(std::move(payoff)), m_S0(S0), m_T(T), m_r(r), m_sigma(sigma), m_seed(seed)
     {
         if (!m_payoff) {
             throw std::invalid_argument("Payoff pointer cannot be null.");
@@ -23,8 +23,9 @@ namespace mcopt {
     }
 
     // Чанк симуляции
-    double MonteCarloEngine::runSimulationChunk(double spot, unsigned long long numPaths) const {
-        thread_local std::mt19937_64 rng{std::random_device{}()};
+    double MonteCarloEngine::runSimulationChunk(double spot, unsigned long long numPaths, unsigned long long chunkIndex) const {
+        std::mt19937_64 rng(m_seed + chunkIndex);
+
         std::normal_distribution<double> dist(0.0, 1.0);
 
         double sumPayoff = 0.0;
@@ -65,8 +66,10 @@ namespace mcopt {
 
         for (unsigned int i = 0; i < numThreads; ++i) {
             unsigned long long paths = pathsPerThread + (i == 0 ? leftoverPaths : 0);
+            // Передаем 'i' как chunkIndex.
+            // i изменяется от 0 до numThreads-1, обеспечивая уникальность seed для каждого потока.
             futures.push_back(std::async(std::launch::async, 
-                &MonteCarloEngine::runSimulationChunk, this, spot, paths));
+                &MonteCarloEngine::runSimulationChunk, this, spot, paths, i));
         }
 
         double totalSum = 0.0;
@@ -84,7 +87,7 @@ namespace mcopt {
     // Метод конечных разностей для Греков
     Greeks MonteCarloEngine::calculateGreeks(unsigned long long numSimulations) {
         // Шаг сдвига (1% от цены или меньше)
-        double h = m_S0 * 0.01; 
+        double h = std::max(m_S0 * 1e-4, 1e-4);
         
         // 1. Базовая цена
         double price = runSimulationForSpot(m_S0, numSimulations);

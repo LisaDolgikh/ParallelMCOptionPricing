@@ -26,7 +26,7 @@ int main() {
 
     // 2. Monte Carlo
     auto payoff = std::make_shared<mcopt::PayoffCall>(K);
-    mcopt::MonteCarloEngine engine(payoff, S0, T, r, sigma);
+    mcopt::MonteCarloEngine engine(payoff, S0, T, r, sigma, 12345);
     
     unsigned long long paths = 5'000'000;
     std::cout << "\n[Monte Carlo (" << paths << " paths)] calculating..." << std::endl;
