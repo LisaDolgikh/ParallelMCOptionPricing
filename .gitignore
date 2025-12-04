@@ -1,6 +1,11 @@
 build/
+out/
+
+docs/
 cmake-build-debug/
 .idea/
 .vscode/
 *.exe
 *.o
+*.ipynb
+*.png

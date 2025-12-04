@@ -3,31 +3,55 @@
 #include <algorithm> // std::max
 #include <string>
 
-/**
- * @brief Abstract base class for option payoff strategies.
- * * Implements the Strategy pattern. Derived classes must implement
- * the operator() to calculate payoff based on the spot price.
- */
-
 namespace mcopt {
 
-    // Абстрактный базовый класс
+    /**
+     * @class Payoff
+     * @brief Abstract base class for option payoff strategies.
+     *
+     * Implements the **Strategy Design Pattern**. This interface allows the
+     * Monte Carlo engine to be decoupled from the specific option type (Call, Put, etc.).
+     * Derived classes must implement the operator() to calculate the payoff
+     * based on the terminal spot price.
+     */
+
     class Payoff {
     public:
         Payoff() = default;
         virtual ~Payoff() = default;
 
-        // const - метод не меняет состояние объекта
-        // noexcept - оптимизация (никогда не выбросит исключение (throw))
+        /**
+         * @brief Calculates the payoff at expiration.
+         *
+         * @param spot The spot price of the underlying asset at expiration \f$ S_T \f$.
+         * @return The calculated payoff value.
+         * @note This method is marked `noexcept` for optimization purposes in tight loops.
+         */
         [[nodiscard]] virtual double operator()(double spot) const noexcept = 0;
-        
-        // Для логирования/отладки
+
+        /**
+         * @brief Returns the name of the payoff type.
+         * @return String representation (e.g., "Call", "Put"). Useful for logging/debugging.
+         */
         [[nodiscard]] virtual std::string name() const = 0;
     };
 
-    // Call Option: max(S - K, 0)
+    /**
+     * @class PayoffCall
+     * @brief European Call Option Payoff.
+     *
+     * Mathematical formula:
+     * \f[
+     * Payoff(S_T) = \max(S_T - K, 0)
+     * \f]
+     * where \f$ K \f$ is the strike price.
+     */
     class PayoffCall : public Payoff {
     public:
+        /**
+         * @brief Constructs a Call Option payoff.
+         * @param strike The strike price \f$ K \f$.
+         */
         explicit PayoffCall(double strike) : m_strike(strike) {}
 
         [[nodiscard]] double operator()(double spot) const noexcept override;
@@ -37,9 +61,22 @@ namespace mcopt {
         double m_strike;
     };
 
-    // Put Option: max(K - S, 0)
+    /**
+     * @class PayoffPut
+     * @brief European Put Option Payoff.
+     *
+     * Mathematical formula:
+     * \f[
+     * Payoff(S_T) = \max(K - S_T, 0)
+     * \f]
+     * where \f$ K \f$ is the strike price.
+     */
     class PayoffPut : public Payoff {
     public:
+        /**
+         * @brief Constructs a Put Option payoff.
+         * @param strike The strike price \f$ K \f$.
+         */
         explicit PayoffPut(double strike) : m_strike(strike) {}
 
         [[nodiscard]] double operator()(double spot) const noexcept override;
