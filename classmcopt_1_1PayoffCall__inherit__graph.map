@@ -1,0 +1,5 @@
+<map id="mcopt::PayoffCall" name="mcopt::PayoffCall">
+<area shape="rect" id="Node000001" title="European Call Option Payoff." alt="" coords="5,179,133,284"/>
+<area shape="rect" id="Node000002" href="$classmcopt_1_1Payoff.html" title="Abstract base class for option payoff strategies." alt="" coords="17,5,121,131"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,145,72,178,67,178,67,145"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="mcopt::PayoffPut" name="mcopt::PayoffPut">
+<area shape="rect" id="Node000001" title="European Put Option Payoff." alt="" coords="5,179,129,284"/>
+<area shape="rect" id="Node000002" href="$classmcopt_1_1Payoff.html" title="Abstract base class for option payoff strategies." alt="" coords="15,5,119,131"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,145,70,178,65,178,65,145"/>
+</map>
