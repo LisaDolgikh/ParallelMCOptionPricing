@@ -1,11 +1,12 @@
-#include <iostream>
 #include <cstring>
-#include <vector>
-#include <memory>
 #include <iomanip>
-#include "src/Payoff.hpp"
+#include <iostream>
+#include <memory>
+#include <vector>
+
 #include "src/Analytical.hpp"
 #include "src/MCEngine.hpp"
+#include "src/Payoff.hpp"
 
 void printUsage(const char* progName) {
     std::cout << "Usage: " << progName << " [options]\n"
@@ -38,12 +39,18 @@ int main(int argc, char* argv[]) {
         // Проверяем, есть ли следующее значение
         if (i + 1 < argc) {
             try {
-                if (arg == "--spot") S0 = std::stod(argv[++i]);
-                else if (arg == "--strike") K = std::stod(argv[++i]);
-                else if (arg == "--r") r = std::stod(argv[++i]);
-                else if (arg == "--sigma") sigma = std::stod(argv[++i]);
-                else if (arg == "--time") T = std::stod(argv[++i]);
-                else if (arg == "--paths") paths = std::stoull(argv[++i]);
+                if (arg == "--spot")
+                    S0 = std::stod(argv[++i]);
+                else if (arg == "--strike")
+                    K = std::stod(argv[++i]);
+                else if (arg == "--r")
+                    r = std::stod(argv[++i]);
+                else if (arg == "--sigma")
+                    sigma = std::stod(argv[++i]);
+                else if (arg == "--time")
+                    T = std::stod(argv[++i]);
+                else if (arg == "--paths")
+                    paths = std::stoull(argv[++i]);
             } catch (const std::exception& e) {
                 std::cerr << "Error parsing value for " << arg << ": " << e.what() << std::endl;
                 return 1;
@@ -52,13 +59,13 @@ int main(int argc, char* argv[]) {
     }
 
     std::cout << "=== Parallel Monte Carlo Option Pricer ===" << std::endl;
-    std::cout << "Parameters: S0=" << S0 << ", K=" << K << ", T=" << T 
-              << ", r=" << r << ", sigma=" << sigma << std::endl;
+    std::cout << "Parameters: S0=" << S0 << ", K=" << K << ", T=" << T << ", r=" << r
+              << ", sigma=" << sigma << std::endl;
     std::cout << "Simulations: " << paths << std::endl;
 
     // 1. Аналитическое решение (для сравнения)
-    auto exact = mcopt::BlackScholesAnalytical::calculate(
-        S0, K, T, r, sigma, mcopt::OptionType::Call);
+    auto exact =
+        mcopt::BlackScholesAnalytical::calculate(S0, K, T, r, sigma, mcopt::OptionType::Call);
 
     std::cout << "\n[Analytical (Black-Scholes)]" << std::endl;
     std::cout << "Price: " << exact.price << std::endl;
@@ -67,7 +74,7 @@ int main(int argc, char* argv[]) {
 
     // 2. Monte Carlo
     auto payoff = std::make_shared<mcopt::PayoffCall>(K);
-    
+
     // Используем seed по умолчанию
     mcopt::MonteCarloEngine engine(payoff, S0, T, r, sigma, 12345);
 
@@ -75,9 +82,12 @@ int main(int argc, char* argv[]) {
     auto mcResult = engine.calculateGreeks(paths);
 
     std::cout << std::fixed << std::setprecision(5);
-    std::cout << "Price: " << mcResult.price << " \t(Error: " << std::abs(mcResult.price - exact.price) << ")" << std::endl;
-    std::cout << "Delta: " << mcResult.delta << " \t(Error: " << std::abs(mcResult.delta - exact.delta) << ")" << std::endl;
-    std::cout << "Gamma: " << mcResult.gamma << " \t(Error: " << std::abs(mcResult.gamma - exact.gamma) << ")" << std::endl;
+    std::cout << "Price: " << mcResult.price
+              << " \t(Error: " << std::abs(mcResult.price - exact.price) << ")" << std::endl;
+    std::cout << "Delta: " << mcResult.delta
+              << " \t(Error: " << std::abs(mcResult.delta - exact.delta) << ")" << std::endl;
+    std::cout << "Gamma: " << mcResult.gamma
+              << " \t(Error: " << std::abs(mcResult.gamma - exact.gamma) << ")" << std::endl;
 
     return 0;
 }
