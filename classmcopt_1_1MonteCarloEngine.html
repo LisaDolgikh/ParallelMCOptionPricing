@@ -124,7 +124,8 @@ dS_t = r S_t dt + \sigma S_t dW_t
 </p>
 <p>Key Features:</p><ul>
 <li><b>Parallel Execution:</b> Uses <code>std::async</code> and <code>std::future</code> for multi-threaded simulation.</li>
-<li><b>Variance Reduction:</b> Implements <b>Antithetic Variates</b> technique (using \( Z \) and \( -Z \)).</li>
+<li><b>Variance Reduction:</b> Implements <b>Antithetic Variates</b> technique (using \( Z \) and \(
+-Z \)).</li>
 <li><b>Reproducibility:</b> Supports deterministic execution via seeded RNG (<code>std::mt19937_64</code>).</li>
 <li><b><a class="el" href="structmcopt_1_1Greeks.html" title="Container for the option&#39;s sensitivity measures.">Greeks</a> Calculation:</b> Computes Delta and Gamma using Finite Difference Methods. </li>
 </ul>
@@ -220,7 +221,8 @@ dS_t = r S_t dt + \sigma S_t dW_t
 <p>Calculates Price, Delta, and Gamma simultaneously. </p>
 <p>Uses <b>Finite Difference Method (FDM)</b> with a small bump \( h \):</p><ul>
 <li><b>Delta:</b> Central difference \( \Delta \approx \frac{V(S+h) - V(S-h)}{2h} \)</li>
-<li><b>Gamma:</b> Second order difference \( \Gamma \approx \frac{V(S+h) - 2V(S) + V(S-h)}{h^2} \)</li>
+<li><b>Gamma:</b> Second order difference \( \Gamma \approx \frac{V(S+h) - 2V(S) + V(S-h)}{h^2}
+\)</li>
 </ul>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

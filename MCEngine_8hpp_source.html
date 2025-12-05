@@ -90,46 +90,45 @@ $(document).ready(function() { init_codefold(0); });
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;Payoff.hpp&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;Analytical.hpp&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>mcopt {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classmcopt_1_1MonteCarloEngine.html">   27</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classmcopt_1_1MonteCarloEngine.html">MonteCarloEngine</a> {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_class" href="classmcopt_1_1MonteCarloEngine.html">MonteCarloEngine</a>(</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            std::shared_ptr&lt;Payoff&gt; payoff,</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordtype">double</span> S0, <span class="keywordtype">double</span> T, <span class="keywordtype">double</span> r, <span class="keywordtype">double</span> sigma,</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            uint64_t seed = 42</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        );</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        [[nodiscard]] <span class="keywordtype">double</span> <a class="code hl_function" href="classmcopt_1_1MonteCarloEngine.html#a5809319b79a36f6f00c246eeb1fdf611">calculatePrice</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> numSimulations) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        [[nodiscard]] <a class="code hl_struct" href="structmcopt_1_1Greeks.html">Greeks</a> <a class="code hl_function" href="classmcopt_1_1MonteCarloEngine.html#a44d50eb0fc4787a71c9b87e92580bcd6">calculateGreeks</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> numSimulations);</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Analytical.hpp&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Payoff.hpp&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span>mcopt {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classmcopt_1_1MonteCarloEngine.html">   29</a></span><span class="keyword">class </span><a class="code hl_class" href="classmcopt_1_1MonteCarloEngine.html">MonteCarloEngine</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>   <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_class" href="classmcopt_1_1MonteCarloEngine.html">MonteCarloEngine</a>(std::shared_ptr&lt;Payoff&gt; payoff, <span class="keywordtype">double</span> S0, <span class="keywordtype">double</span> T, <span class="keywordtype">double</span> r, <span class="keywordtype">double</span> sigma,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                     uint64_t seed = 42);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    [[nodiscard]] <span class="keywordtype">double</span> <a class="code hl_function" href="classmcopt_1_1MonteCarloEngine.html#a5809319b79a36f6f00c246eeb1fdf611">calculatePrice</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> numSimulations) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    [[nodiscard]] <a class="code hl_struct" href="structmcopt_1_1Greeks.html">Greeks</a> <a class="code hl_function" href="classmcopt_1_1MonteCarloEngine.html#a44d50eb0fc4787a71c9b87e92580bcd6">calculateGreeks</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> numSimulations);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classmcopt_1_1MonteCarloEngine.html#abc3274eb9d88eda93411bfe8da38b54f">setNumThreads</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> threads);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classmcopt_1_1MonteCarloEngine.html#abc3274eb9d88eda93411bfe8da38b54f">setNumThreads</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> threads);</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        std::shared_ptr&lt;Payoff&gt; m_payoff;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordtype">double</span> m_S0;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordtype">double</span> m_T;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordtype">double</span> m_r;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordtype">double</span> m_sigma;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        uint64_t m_seed;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>   <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    std::shared_ptr&lt;Payoff&gt; m_payoff;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">double</span> m_S0;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">double</span> m_T;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">double</span> m_r;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">double</span> m_sigma;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    uint64_t m_seed;</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_numThreads;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        [[nodiscard]] <span class="keywordtype">double</span> runSimulationForSpot(<span class="keywordtype">double</span> spot, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> numSimulations) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        [[nodiscard]] <span class="keywordtype">double</span> runSimulationChunk(<span class="keywordtype">double</span> spot, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> numPaths, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> chunkIndex) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    };</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_numThreads;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    [[nodiscard]] <span class="keywordtype">double</span> runSimulationForSpot(<span class="keywordtype">double</span> spot, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> numSimulations) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    [[nodiscard]] <span class="keywordtype">double</span> runSimulationChunk(<span class="keywordtype">double</span> spot, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> numPaths,</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                                            <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> chunkIndex) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>};</div>
 </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>} <span class="comment">// namespace mcopt</span></div>
-<div class="ttc" id="aclassmcopt_1_1MonteCarloEngine_html"><div class="ttname"><a href="classmcopt_1_1MonteCarloEngine.html">mcopt::MonteCarloEngine</a></div><div class="ttdoc">High-performance parallel Monte Carlo pricing engine.</div><div class="ttdef"><b>Definition</b> MCEngine.hpp:27</div></div>
-<div class="ttc" id="aclassmcopt_1_1MonteCarloEngine_html_a44d50eb0fc4787a71c9b87e92580bcd6"><div class="ttname"><a href="classmcopt_1_1MonteCarloEngine.html#a44d50eb0fc4787a71c9b87e92580bcd6">mcopt::MonteCarloEngine::calculateGreeks</a></div><div class="ttdeci">Greeks calculateGreeks(unsigned long long numSimulations)</div><div class="ttdoc">Calculates Price, Delta, and Gamma simultaneously.</div><div class="ttdef"><b>Definition</b> MCEngine.cpp:103</div></div>
-<div class="ttc" id="aclassmcopt_1_1MonteCarloEngine_html_a5809319b79a36f6f00c246eeb1fdf611"><div class="ttname"><a href="classmcopt_1_1MonteCarloEngine.html#a5809319b79a36f6f00c246eeb1fdf611">mcopt::MonteCarloEngine::calculatePrice</a></div><div class="ttdeci">double calculatePrice(unsigned long long numSimulations) const</div><div class="ttdoc">Calculates the option price using Monte Carlo simulation.</div><div class="ttdef"><b>Definition</b> MCEngine.cpp:98</div></div>
-<div class="ttc" id="aclassmcopt_1_1MonteCarloEngine_html_abc3274eb9d88eda93411bfe8da38b54f"><div class="ttname"><a href="classmcopt_1_1MonteCarloEngine.html#abc3274eb9d88eda93411bfe8da38b54f">mcopt::MonteCarloEngine::setNumThreads</a></div><div class="ttdeci">void setNumThreads(unsigned int threads)</div><div class="ttdoc">Manually sets the number of threads for simulation.</div><div class="ttdef"><b>Definition</b> MCEngine.cpp:28</div></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}  <span class="comment">// namespace mcopt</span></div>
+<div class="ttc" id="aclassmcopt_1_1MonteCarloEngine_html"><div class="ttname"><a href="classmcopt_1_1MonteCarloEngine.html">mcopt::MonteCarloEngine</a></div><div class="ttdoc">High-performance parallel Monte Carlo pricing engine.</div><div class="ttdef"><b>Definition</b> MCEngine.hpp:29</div></div>
+<div class="ttc" id="aclassmcopt_1_1MonteCarloEngine_html_a44d50eb0fc4787a71c9b87e92580bcd6"><div class="ttname"><a href="classmcopt_1_1MonteCarloEngine.html#a44d50eb0fc4787a71c9b87e92580bcd6">mcopt::MonteCarloEngine::calculateGreeks</a></div><div class="ttdeci">Greeks calculateGreeks(unsigned long long numSimulations)</div><div class="ttdoc">Calculates Price, Delta, and Gamma simultaneously.</div><div class="ttdef"><b>Definition</b> MCEngine.cpp:104</div></div>
+<div class="ttc" id="aclassmcopt_1_1MonteCarloEngine_html_a5809319b79a36f6f00c246eeb1fdf611"><div class="ttname"><a href="classmcopt_1_1MonteCarloEngine.html#a5809319b79a36f6f00c246eeb1fdf611">mcopt::MonteCarloEngine::calculatePrice</a></div><div class="ttdeci">double calculatePrice(unsigned long long numSimulations) const</div><div class="ttdoc">Calculates the option price using Monte Carlo simulation.</div><div class="ttdef"><b>Definition</b> MCEngine.cpp:99</div></div>
+<div class="ttc" id="aclassmcopt_1_1MonteCarloEngine_html_abc3274eb9d88eda93411bfe8da38b54f"><div class="ttname"><a href="classmcopt_1_1MonteCarloEngine.html#abc3274eb9d88eda93411bfe8da38b54f">mcopt::MonteCarloEngine::setNumThreads</a></div><div class="ttdeci">void setNumThreads(unsigned int threads)</div><div class="ttdoc">Manually sets the number of threads for simulation.</div><div class="ttdef"><b>Definition</b> MCEngine.cpp:27</div></div>
 <div class="ttc" id="astructmcopt_1_1Greeks_html"><div class="ttname"><a href="structmcopt_1_1Greeks.html">mcopt::Greeks</a></div><div class="ttdoc">Container for the option's sensitivity measures.</div><div class="ttdef"><b>Definition</b> Analytical.hpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
