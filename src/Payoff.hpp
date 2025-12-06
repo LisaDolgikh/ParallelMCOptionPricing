@@ -86,4 +86,23 @@ class PayoffPut : public Payoff {
     double m_strike;
 };
 
+/**
+ * @class PayoffAsianCall
+ * @brief Arithmetic Asian Call Option.
+ * Payoff = max(Average(S) - K, 0)
+ */
+class PayoffAsianCall : public Payoff {
+   public:
+    explicit PayoffAsianCall(double strike) : m_strike(strike) {}
+
+    [[nodiscard]] double operator()(double spot) const noexcept override {
+        // Здесь spot будет интерпретирован как Average Price
+        return std::max(spot - m_strike, 0.0);
+    }
+    [[nodiscard]] std::string name() const override { return "Asian Call"; }
+
+   private:
+    double m_strike;
+};
+
 }  // namespace mcopt

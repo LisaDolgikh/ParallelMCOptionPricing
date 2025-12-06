@@ -1,0 +1,18 @@
+---
+# Мы включаем проверки на:
+# bugprone-* : поиск потенциальных багов
+# modernize-* : использование фишек C++17/20
+# performance-* : советы по оптимизации скорости
+# readability-* : советы по читаемости
+# -modernize-use-trailing-return-type : отключаем требование писать auto func() -> int
+Checks: 'bugprone-*,
+         modernize-*,
+         performance-*,
+         readability-*,
+         -modernize-use-trailing-return-type,
+         -readability-magic-numbers'
+
+# Игнорировать предупреждения в сторонних библиотеках (GoogleTest)
+HeaderFilterRegex: 'src/.*'
+WarningsAsErrors: '*'
+...

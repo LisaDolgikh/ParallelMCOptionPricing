@@ -60,7 +60,14 @@ class MonteCarloEngine {
      * @return A Greeks structure containing price, delta, and gamma.
      */
     [[nodiscard]] Greeks calculateGreeks(unsigned long long numSimulations);
-
+    /**
+     * @brief Calculates price for Path-Dependent options (e.g., Asian).
+     * Uses Euler-Maruyama discretization.
+     * @param numSimulations Number of paths.
+     * @param numSteps Number of time steps per path (e.g., 252 for daily monitoring).
+     */
+    [[nodiscard]] double calculateAsianPrice(unsigned long long numSimulations,
+                                             unsigned int numSteps) const;
     /**
      * @brief Manually sets the number of threads for simulation.
      *
@@ -103,6 +110,8 @@ class MonteCarloEngine {
      */
     [[nodiscard]] double runSimulationChunk(double spot, unsigned long long numPaths,
                                             unsigned long long chunkIndex) const;
+    [[nodiscard]] double runAsianChunk(unsigned long long numPaths, unsigned int numSteps,
+                                       unsigned long long chunkIndex) const;
 };
 
 }  // namespace mcopt

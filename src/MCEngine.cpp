@@ -66,6 +66,38 @@ double MonteCarloEngine::runSimulationChunk(double spot, unsigned long long numP
     return sumPayoff;
 }
 
+double MonteCarloEngine::runAsianChunk(unsigned long long numPaths, unsigned int numSteps,
+                                       unsigned long long chunkIndex) const {
+    std::mt19937_64 rng(m_seed + chunkIndex);
+    std::normal_distribution<double> dist(0.0, 1.0);
+
+    double sumPayoff = 0.0;
+    double dt = m_T / static_cast<double>(numSteps);
+
+    // Предварительные вычисления для оптимизации (дрейф и диффузия на шаге dt)
+    double driftPart = (m_r - 0.5 * m_sigma * m_sigma) * dt;
+    double volPart = m_sigma * std::sqrt(dt);
+
+    for (unsigned long long i = 0; i < numPaths; ++i) {
+        double currentSpot = m_S0;
+        double sumSpots = 0.0;  // Для среднего арифметического
+
+        // Шагаем по времени: t_0 -> t_1 -> ... -> t_N
+        // Азиатский опцион обычно не включает S0 в среднее, или включает - зависит от
+        // контракта. Будем считать среднее по точкам мониторинга t_1...t_N
+        for (unsigned int j = 0; j < numSteps; ++j) {
+            double Z = dist(rng);
+            currentSpot *= std::exp(driftPart + volPart * Z);
+            sumSpots += currentSpot;
+        }
+
+        double averageSpot = sumSpots / static_cast<double>(numSteps);
+        sumPayoff += (*m_payoff)(averageSpot);
+    }
+
+    return sumPayoff;  // Возвращаем сумму, дисконтировать будем в вызывающем методе
+}
+
 // Обертка для запуска потоков
 double MonteCarloEngine::runSimulationForSpot(double spot,
                                               unsigned long long numSimulations) const {
@@ -98,6 +130,28 @@ double MonteCarloEngine::runSimulationForSpot(double spot,
 
 double MonteCarloEngine::calculatePrice(unsigned long long numSimulations) const {
     return runSimulationForSpot(m_S0, numSimulations);
+}
+
+double MonteCarloEngine::calculateAsianPrice(unsigned long long numSimulations,
+                                             unsigned int numSteps) const {
+    unsigned int numThreads = m_numThreads;  // Используем то число потоков, которое настроено
+    unsigned long long pathsPerThread = numSimulations / numThreads;
+    unsigned long long leftover = numSimulations % numThreads;
+
+    std::vector<std::future<double>> futures;
+    for (unsigned int i = 0; i < numThreads; ++i) {
+        unsigned long long paths = pathsPerThread + (i == 0 ? leftover : 0);
+        futures.push_back(std::async(std::launch::async, &MonteCarloEngine::runAsianChunk, this,
+                                     paths, numSteps, i));
+    }
+
+    double totalSum = 0.0;
+    for (auto& f : futures) {
+        totalSum += f.get();
+    }
+
+    // Дисконтирование
+    return std::exp(-m_r * m_T) * (totalSum / static_cast<double>(numSimulations));
 }
 
 // Метод конечных разностей для Греков

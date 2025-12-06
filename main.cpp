@@ -1,3 +1,4 @@
+#include <cmath>
 #include <cstring>
 #include <iomanip>
 #include <iostream>
@@ -17,6 +18,7 @@ void printUsage(const char* progName) {
               << "  --sigma <value>     Volatility (default: 0.2)\n"
               << "  --time <value>      Time to maturity in years (default: 1.0)\n"
               << "  --paths <value>     Number of MC simulations (default: 1'000'000)\n"
+              << "  --steps <value>     Steps for Asian Option (default: 252)\n"
               << "  --help              Show this help message\n";
 }
 
@@ -27,6 +29,7 @@ int main(int argc, char* argv[]) {
     double r = 0.05;
     double sigma = 0.2;
     unsigned long long paths = 1'000'000;
+    unsigned int steps = 252;
 
     // Парсинг аргументов
     for (int i = 1; i < argc; ++i) {
@@ -36,7 +39,6 @@ int main(int argc, char* argv[]) {
             return 0;
         }
 
-        // Проверяем, есть ли следующее значение
         if (i + 1 < argc) {
             try {
                 if (arg == "--spot")
@@ -51,6 +53,8 @@ int main(int argc, char* argv[]) {
                     T = std::stod(argv[++i]);
                 else if (arg == "--paths")
                     paths = std::stoull(argv[++i]);
+                else if (arg == "--steps")
+                    steps = std::stoul(argv[++i]);  // Новый параметр
             } catch (const std::exception& e) {
                 std::cerr << "Error parsing value for " << arg << ": " << e.what() << std::endl;
                 return 1;
@@ -62,32 +66,65 @@ int main(int argc, char* argv[]) {
     std::cout << "Parameters: S0=" << S0 << ", K=" << K << ", T=" << T << ", r=" << r
               << ", sigma=" << sigma << std::endl;
     std::cout << "Simulations: " << paths << std::endl;
+    std::cout << "Asian Steps: " << steps << " (Time discretization)" << std::endl;
 
-    // 1. Аналитическое решение (для сравнения)
+    // ==========================================
+    // 1. Analytical Solution (Reference)
+    // ==========================================
     auto exact =
         mcopt::BlackScholesAnalytical::calculate(S0, K, T, r, sigma, mcopt::OptionType::Call);
 
-    std::cout << "\n[Analytical (Black-Scholes)]" << std::endl;
-    std::cout << "Price: " << exact.price << std::endl;
-    std::cout << "Delta: " << exact.delta << std::endl;
-    std::cout << "Gamma: " << exact.gamma << std::endl;
+    std::cout << "\n[1. Analytical (European Call)]" << std::endl;
+    std::cout << std::fixed << std::setprecision(5);
 
-    // 2. Monte Carlo
-    auto payoff = std::make_shared<mcopt::PayoffCall>(K);
+    std::cout << std::left << std::setw(8) << "Price:" << std::setw(12) << exact.price << std::endl;
 
-    // Используем seed по умолчанию
-    mcopt::MonteCarloEngine engine(payoff, S0, T, r, sigma, 12345);
+    std::cout << std::left << std::setw(8) << "Delta:" << std::setw(12) << exact.delta << std::endl;
 
-    std::cout << "\n[Monte Carlo] Calculating..." << std::endl;
-    auto mcResult = engine.calculateGreeks(paths);
+    std::cout << std::left << std::setw(8) << "Gamma:" << std::setw(12) << exact.gamma << std::endl;
+
+    // ==========================================
+    // 2. Monte Carlo (European)
+    // ==========================================
+
+    auto payoffEur = std::make_shared<mcopt::PayoffCall>(K);
+    mcopt::MonteCarloEngine engineEur(payoffEur, S0, T, r, sigma, 12345);  // Seed 12345
+
+    std::cout << "\n[2. Monte Carlo (European Call)]" << std::endl;
+    auto mcResult = engineEur.calculateGreeks(paths);
 
     std::cout << std::fixed << std::setprecision(5);
-    std::cout << "Price: " << mcResult.price
-              << " \t(Error: " << std::abs(mcResult.price - exact.price) << ")" << std::endl;
-    std::cout << "Delta: " << mcResult.delta
-              << " \t(Error: " << std::abs(mcResult.delta - exact.delta) << ")" << std::endl;
-    std::cout << "Gamma: " << mcResult.gamma
-              << " \t(Error: " << std::abs(mcResult.gamma - exact.gamma) << ")" << std::endl;
+
+    std::cout << std::left << std::setw(8) << "Price:" << std::setw(12) << mcResult.price
+              << "(Error: " << std::abs(mcResult.price - exact.price) << ")" << std::endl;
+
+    std::cout << std::left << std::setw(8) << "Delta:" << std::setw(12) << mcResult.delta
+              << "(Error: " << std::abs(mcResult.delta - exact.delta) << ")" << std::endl;
+
+    std::cout << std::left << std::setw(8) << "Gamma:" << std::setw(12) << mcResult.gamma
+              << "(Error: " << std::abs(mcResult.gamma - exact.gamma) << ")" << std::endl;
+
+    // ==========================================
+    // 3. Monte Carlo (Asian - Path Dependent)
+    // ==========================================
+    auto payoffAsian = std::make_shared<mcopt::PayoffAsianCall>(K);
+    mcopt::MonteCarloEngine engineAsian(payoffAsian, S0, T, r, sigma, 12345);
+
+    std::cout << "\n[3. Monte Carlo (Asian Arithmetic Call)]" << std::endl;
+
+    auto start = std::chrono::high_resolution_clock::now();
+    double priceAsian = engineAsian.calculateAsianPrice(paths, steps);
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff = end - start;
+
+    std::cout << std::left << std::setw(8) << "Price:" << std::setw(12) << priceAsian << std::endl;
+
+    std::cout << std::left << std::setw(8) << "Time:" << std::setw(12) << std::setprecision(4)
+              << diff.count() << " sec" << std::endl;
+
+    std::cout << std::setprecision(5);
+    std::cout << "Note: Asian Price (" << priceAsian << ") < European Price (" << mcResult.price
+              << ") due to volatility averaging effect." << std::endl;
 
     return 0;
 }
