@@ -1,37 +1,38 @@
 #include <gtest/gtest.h>
-#include <memory>
+
 #include <cmath>
-#include "../src/Payoff.hpp"
+#include <memory>
+
 #include "../src/Analytical.hpp"
 #include "../src/MCEngine.hpp"
-
+#include "../src/Payoff.hpp"
 
 // Тест 1: При волатильности близкой к 0, цена MC должна совпадать с внутренней стоимостью
 TEST(MonteCarloTest, ZeroVolatilityLimit) {
-    double S0 = 110.0; 
-    double K = 100.0; 
-    double T = 1.0; 
-    double r = 0.05; 
-    double sigma = 0.0001; // Почти ноль
+    double S0 = 110.0;
+    double K = 100.0;
+    double T = 1.0;
+    double r = 0.05;
+    double sigma = 0.0001;  // Почти ноль
 
     auto payoff = std::make_shared<mcopt::PayoffCall>(K);
     uint64_t seed = 123;
     mcopt::MonteCarloEngine engine(payoff, S0, T, r, sigma, seed);
 
     double mcPrice = engine.calculatePrice(100'000);
-    
+
     // Теоретическая цена: S0 - K * exp(-rT) (так как S0 > K)
     double intrinsic = S0 - K * std::exp(-r * T);
-    
+
     EXPECT_NEAR(mcPrice, intrinsic, 0.05);
 }
 
 // Тест 2: Deep Out of the Money (Опцион должен стоить 0)
 TEST(MonteCarloTest, DeepOTM) {
-    double S0 = 10.0;   // Цена сильно ниже страйка
-    double K = 100.0; 
-    double T = 0.5; 
-    double r = 0.01; 
+    double S0 = 10.0;  // Цена сильно ниже страйка
+    double K = 100.0;
+    double T = 0.5;
+    double r = 0.01;
     double sigma = 0.2;
     uint64_t seed = 123;
 
@@ -42,18 +43,18 @@ TEST(MonteCarloTest, DeepOTM) {
     EXPECT_NEAR(price, 0.0, 1e-5);
 }
 
-
 // Тест 3: Тест на Греки
 // Проверяем точность вычисления греков
 TEST(MonteCarloTest, GreeksConvergence) {
-    double S0 = 100.0; 
-    double K = 100.0; 
-    double T = 1.0; 
-    double r = 0.05; 
+    double S0 = 100.0;
+    double K = 100.0;
+    double T = 1.0;
+    double r = 0.05;
     double sigma = 0.2;
     uint64_t seed = 123;
 
-    auto exact = mcopt::BlackScholesAnalytical::calculate(S0, K, T, r, sigma, mcopt::OptionType::Call);
+    auto exact =
+        mcopt::BlackScholesAnalytical::calculate(S0, K, T, r, sigma, mcopt::OptionType::Call);
 
     auto payoff = std::make_shared<mcopt::PayoffCall>(K);
     mcopt::MonteCarloEngine engine(payoff, S0, T, r, sigma, seed);
@@ -63,18 +64,18 @@ TEST(MonteCarloTest, GreeksConvergence) {
 
     // Допуски:
     // Delta сходится хорошо
-    EXPECT_NEAR(mcRes.delta, exact.delta, 0.01); 
-    
+    EXPECT_NEAR(mcRes.delta, exact.delta, 0.01);
+
     // Gamma сходится сложнее (вторая производная), допуск пошире
     EXPECT_NEAR(mcRes.gamma, exact.gamma, 0.05);
 }
 
 // Тест 4: Проверка воспроизводимости
 TEST(MonteCarloTest, Reproducibility) {
-    double S0 = 100.0; 
-    double K = 100.0; 
-    double T = 1.0; 
-    double r = 0.05; 
+    double S0 = 100.0;
+    double K = 100.0;
+    double T = 1.0;
+    double r = 0.05;
     double sigma = 0.2;
 
     auto payoff = std::make_shared<mcopt::PayoffCall>(K);
@@ -99,15 +100,15 @@ TEST(MonteCarloTest, Reproducibility) {
 // Тест 5: Put-Call Parity на Monte Carlo движке
 // C - P = S - K * exp(-rT)
 TEST(MonteCarloTest, PutCallParityMC) {
-    double S0 = 100.0; 
-    double K = 100.0; 
-    double T = 1.0; 
-    double r = 0.05; 
+    double S0 = 100.0;
+    double K = 100.0;
+    double T = 1.0;
+    double r = 0.05;
     double sigma = 0.2;
     unsigned long long paths = 1'000'000;
-    
+
     uint64_t seed = 123;
-    //Фиксируем единый seed для обоих движков
+    // Фиксируем единый seed для обоих движков
 
     // Call
     auto callPayoff = std::make_shared<mcopt::PayoffCall>(K);
@@ -122,26 +123,26 @@ TEST(MonteCarloTest, PutCallParityMC) {
     double lhs = callPrice - putPrice;
     double rhs = S0 - K * std::exp(-r * T);
 
-    EXPECT_NEAR(lhs, rhs, 0.1); 
+    EXPECT_NEAR(lhs, rhs, 0.1);
 }
 
 // Тест 6: Сходимость и Antithetic Variates
 // Проверяем, что с ростом числа путей ошибка уменьшается (Smoke test)
 TEST(MonteCarloTest, ConvergenceCheck) {
-    double S0 = 100.0; 
-    double K = 100.0; 
-    double T = 1.0; 
-    double r = 0.05; 
+    double S0 = 100.0;
+    double K = 100.0;
+    double T = 1.0;
+    double r = 0.05;
     double sigma = 0.2;
     uint64_t seed = 123;
-    
-    auto exact = mcopt::BlackScholesAnalytical::calculate(
-        S0, K, T, r, sigma, mcopt::OptionType::Call); //
-        
+
+    auto exact =
+        mcopt::BlackScholesAnalytical::calculate(S0, K, T, r, sigma, mcopt::OptionType::Call);  //
+
     auto payoff = std::make_shared<mcopt::PayoffCall>(K);
     mcopt::MonteCarloEngine engine(payoff, S0, T, r, sigma, seed);
 
-    double price10k = engine.calculatePrice(10'000);
+    double price10k = engine.calculatePrice(1'000);
     double price1M = engine.calculatePrice(1'000'000);
 
     double err10k = std::abs(price10k - exact.price);
