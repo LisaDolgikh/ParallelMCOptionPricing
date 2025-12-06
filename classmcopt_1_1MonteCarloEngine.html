@@ -96,7 +96,7 @@ Collaboration diagram for mcopt::MonteCarloEngine:</div>
 <div class="dyncontent">
 <div class="center"><img src="classmcopt_1_1MonteCarloEngine__coll__graph.png" border="0" usemap="#amcopt_1_1MonteCarloEngine_coll__map" alt="Collaboration graph"/></div>
 <map name="amcopt_1_1MonteCarloEngine_coll__map" id="amcopt_1_1MonteCarloEngine_coll__map">
-<area shape="rect" title="High&#45;performance parallel Monte Carlo pricing engine." alt="" coords="5,5,188,131"/>
+<area shape="rect" title="High&#45;performance parallel Monte Carlo pricing engine." alt="" coords="5,5,188,151"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -111,6 +111,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a44d50eb0fc4787a71c9b87e92580bcd6" id="r_a44d50eb0fc4787a71c9b87e92580bcd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmcopt_1_1Greeks.html">Greeks</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmcopt_1_1MonteCarloEngine.html#a44d50eb0fc4787a71c9b87e92580bcd6">calculateGreeks</a> (unsigned long long numSimulations)</td></tr>
 <tr class="memdesc:a44d50eb0fc4787a71c9b87e92580bcd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates Price, Delta, and Gamma simultaneously.  <br /></td></tr>
 <tr class="separator:a44d50eb0fc4787a71c9b87e92580bcd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a990b565788951bd70b0c733011127a" id="r_a7a990b565788951bd70b0c733011127a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmcopt_1_1MonteCarloEngine.html#a7a990b565788951bd70b0c733011127a">calculateAsianPrice</a> (unsigned long long numSimulations, unsigned int numSteps) const</td></tr>
+<tr class="memdesc:a7a990b565788951bd70b0c733011127a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates price for Path-Dependent options (e.g., Asian). Uses Euler-Maruyama discretization.  <br /></td></tr>
+<tr class="separator:a7a990b565788951bd70b0c733011127a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc3274eb9d88eda93411bfe8da38b54f" id="r_abc3274eb9d88eda93411bfe8da38b54f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmcopt_1_1MonteCarloEngine.html#abc3274eb9d88eda93411bfe8da38b54f">setNumThreads</a> (unsigned int threads)</td></tr>
 <tr class="memdesc:abc3274eb9d88eda93411bfe8da38b54f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually sets the number of threads for simulation.  <br /></td></tr>
 <tr class="separator:abc3274eb9d88eda93411bfe8da38b54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -202,6 +205,43 @@ dS_t = r S_t dt + \sigma S_t dW_t
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7a990b565788951bd70b0c733011127a" name="a7a990b565788951bd70b0c733011127a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a990b565788951bd70b0c733011127a">&#9670;&#160;</a></span>calculateAsianPrice()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double mcopt::MonteCarloEngine::calculateAsianPrice </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long long&#160;</td>
+          <td class="paramname"><em>numSimulations</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>numSteps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates price for Path-Dependent options (e.g., Asian). Uses Euler-Maruyama discretization. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numSimulations</td><td>Number of paths. </td></tr>
+    <tr><td class="paramname">numSteps</td><td>Number of time steps per path (e.g., 252 for daily monitoring). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a44d50eb0fc4787a71c9b87e92580bcd6" name="a44d50eb0fc4787a71c9b87e92580bcd6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a44d50eb0fc4787a71c9b87e92580bcd6">&#9670;&#160;</a></span>calculateGreeks()</h2>
 

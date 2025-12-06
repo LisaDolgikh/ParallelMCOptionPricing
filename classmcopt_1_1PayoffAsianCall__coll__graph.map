@@ -1,0 +1,5 @@
+<map id="mcopt::PayoffAsianCall" name="mcopt::PayoffAsianCall">
+<area shape="rect" id="Node000001" title="Arithmetic Asian Call Option. Payoff = max(Average(S) &#45; K, 0)" alt="" coords="5,179,169,284"/>
+<area shape="rect" id="Node000002" href="$classmcopt_1_1Payoff.html" title="Abstract base class for option payoff strategies." alt="" coords="35,5,139,131"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,145,90,178,85,178,85,145"/>
+</map>

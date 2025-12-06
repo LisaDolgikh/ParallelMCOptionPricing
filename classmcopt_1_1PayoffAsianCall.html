@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Parallel Monte Carlo Option Pricer: mcopt::Payoff Class Reference</title>
+<title>Parallel Monte Carlo Option Pricer: mcopt::PayoffAsianCall Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,59 +76,59 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>mcopt</b></li><li class="navelem"><a class="el" href="classmcopt_1_1Payoff.html">Payoff</a></li>  </ul>
+<li class="navelem"><b>mcopt</b></li><li class="navelem"><a class="el" href="classmcopt_1_1PayoffAsianCall.html">PayoffAsianCall</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="classmcopt_1_1Payoff-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">mcopt::Payoff Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+<a href="classmcopt_1_1PayoffAsianCall-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">mcopt::PayoffAsianCall Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Abstract base class for option payoff strategies.  
- <a href="classmcopt_1_1Payoff.html#details">More...</a></p>
+<p>Arithmetic Asian Call Option. <a class="el" href="classmcopt_1_1Payoff.html" title="Abstract base class for option payoff strategies.">Payoff</a> = max(Average(S) - K, 0)  
+ <a href="classmcopt_1_1PayoffAsianCall.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Payoff_8hpp_source.html">Payoff.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for mcopt::Payoff:</div>
+Inheritance diagram for mcopt::PayoffAsianCall:</div>
 <div class="dyncontent">
-<div class="center"><img src="classmcopt_1_1Payoff__inherit__graph.png" border="0" usemap="#amcopt_1_1Payoff_inherit__map" alt="Inheritance graph"/></div>
-<map name="amcopt_1_1Payoff_inherit__map" id="amcopt_1_1Payoff_inherit__map">
-<area shape="rect" title="Abstract base class for option payoff strategies." alt="" coords="206,5,310,131"/>
-<area shape="rect" href="classmcopt_1_1PayoffAsianCall.html" title="Arithmetic Asian Call Option. Payoff = max(Average(S) &#45; K, 0)" alt="" coords="5,179,169,284"/>
-<area shape="poly" title=" " alt="" coords="198,130,144,180,140,176,194,126"/>
-<area shape="rect" href="classmcopt_1_1PayoffCall.html" title="European Call Option Payoff." alt="" coords="194,179,322,284"/>
-<area shape="poly" title=" " alt="" coords="261,145,261,178,255,178,255,145"/>
-<area shape="rect" href="classmcopt_1_1PayoffPut.html" title="European Put Option Payoff." alt="" coords="347,179,471,284"/>
-<area shape="poly" title=" " alt="" coords="321,133,362,176,358,180,318,137"/>
+<div class="center"><img src="classmcopt_1_1PayoffAsianCall__inherit__graph.png" border="0" usemap="#amcopt_1_1PayoffAsianCall_inherit__map" alt="Inheritance graph"/></div>
+<map name="amcopt_1_1PayoffAsianCall_inherit__map" id="amcopt_1_1PayoffAsianCall_inherit__map">
+<area shape="rect" title="Arithmetic Asian Call Option. Payoff = max(Average(S) &#45; K, 0)" alt="" coords="5,179,169,284"/>
+<area shape="rect" href="classmcopt_1_1Payoff.html" title="Abstract base class for option payoff strategies." alt="" coords="35,5,139,131"/>
+<area shape="poly" title=" " alt="" coords="90,145,90,178,85,178,85,145"/>
 </map>
 </div>
 <div class="dynheader">
-Collaboration diagram for mcopt::Payoff:</div>
+Collaboration diagram for mcopt::PayoffAsianCall:</div>
 <div class="dyncontent">
-<div class="center"><img src="classmcopt_1_1Payoff__coll__graph.png" border="0" usemap="#amcopt_1_1Payoff_coll__map" alt="Collaboration graph"/></div>
-<map name="amcopt_1_1Payoff_coll__map" id="amcopt_1_1Payoff_coll__map">
-<area shape="rect" title="Abstract base class for option payoff strategies." alt="" coords="5,5,109,131"/>
+<div class="center"><img src="classmcopt_1_1PayoffAsianCall__coll__graph.png" border="0" usemap="#amcopt_1_1PayoffAsianCall_coll__map" alt="Collaboration graph"/></div>
+<map name="amcopt_1_1PayoffAsianCall_coll__map" id="amcopt_1_1PayoffAsianCall_coll__map">
+<area shape="rect" title="Arithmetic Asian Call Option. Payoff = max(Average(S) &#45; K, 0)" alt="" coords="5,179,169,284"/>
+<area shape="rect" href="classmcopt_1_1Payoff.html" title="Abstract base class for option payoff strategies." alt="" coords="35,5,139,131"/>
+<area shape="poly" title=" " alt="" coords="90,145,90,178,85,178,85,145"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3edc278c7e787cc8a9687dde8e1586fb" id="r_a3edc278c7e787cc8a9687dde8e1586fb"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmcopt_1_1Payoff.html#a3edc278c7e787cc8a9687dde8e1586fb">operator()</a> (double spot) const noexcept=0</td></tr>
-<tr class="memdesc:a3edc278c7e787cc8a9687dde8e1586fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the payoff at expiration.  <br /></td></tr>
-<tr class="separator:a3edc278c7e787cc8a9687dde8e1586fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7c578b4a5e1448b7b1a1b86b2480fb2" id="r_ac7c578b4a5e1448b7b1a1b86b2480fb2"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmcopt_1_1Payoff.html#ac7c578b4a5e1448b7b1a1b86b2480fb2">name</a> () const =0</td></tr>
-<tr class="memdesc:ac7c578b4a5e1448b7b1a1b86b2480fb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the payoff type.  <br /></td></tr>
-<tr class="separator:ac7c578b4a5e1448b7b1a1b86b2480fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d0f83f1dce638676274c612c0dc788e" id="r_a5d0f83f1dce638676274c612c0dc788e"><td class="memItemLeft" align="right" valign="top"><a id="a5d0f83f1dce638676274c612c0dc788e" name="a5d0f83f1dce638676274c612c0dc788e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PayoffAsianCall</b> (double strike)</td></tr>
+<tr class="separator:a5d0f83f1dce638676274c612c0dc788e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17c7b614dd8112ff0e888a77d5a9d2ea" id="r_a17c7b614dd8112ff0e888a77d5a9d2ea"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmcopt_1_1PayoffAsianCall.html#a17c7b614dd8112ff0e888a77d5a9d2ea">operator()</a> (double spot) const noexcept override</td></tr>
+<tr class="memdesc:a17c7b614dd8112ff0e888a77d5a9d2ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the payoff at expiration.  <br /></td></tr>
+<tr class="separator:a17c7b614dd8112ff0e888a77d5a9d2ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5afd4344adfdd4ae53539987e228b878" id="r_a5afd4344adfdd4ae53539987e228b878"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmcopt_1_1PayoffAsianCall.html#a5afd4344adfdd4ae53539987e228b878">name</a> () const override</td></tr>
+<tr class="memdesc:a5afd4344adfdd4ae53539987e228b878"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the payoff type.  <br /></td></tr>
+<tr class="separator:a5afd4344adfdd4ae53539987e228b878"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract base class for option payoff strategies. </p>
-<p>Implements the <b>Strategy Design Pattern</b>. This interface allows the Monte Carlo engine to be decoupled from the specific option type (Call, Put, etc.). Derived classes must implement the operator() to calculate the payoff based on the terminal spot price. </p>
+<div class="textblock"><p>Arithmetic Asian Call Option. <a class="el" href="classmcopt_1_1Payoff.html" title="Abstract base class for option payoff strategies.">Payoff</a> = max(Average(S) - K, 0) </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac7c578b4a5e1448b7b1a1b86b2480fb2" name="ac7c578b4a5e1448b7b1a1b86b2480fb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7c578b4a5e1448b7b1a1b86b2480fb2">&#9670;&#160;</a></span>name()</h2>
+<a id="a5afd4344adfdd4ae53539987e228b878" name="a5afd4344adfdd4ae53539987e228b878"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5afd4344adfdd4ae53539987e228b878">&#9670;&#160;</a></span>name()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,7 +137,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual std::string mcopt::Payoff::name </td>
+          <td class="memname">std::string mcopt::PayoffAsianCall::name </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -145,7 +145,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -153,12 +153,12 @@ Public Member Functions</h2></td></tr>
 <p>Returns the name of the payoff type. </p>
 <dl class="section return"><dt>Returns</dt><dd>String representation (e.g., "Call", "Put"). Useful for logging/debugging. </dd></dl>
 
-<p>Implemented in <a class="el" href="classmcopt_1_1PayoffCall.html#ab79e5059c93e3c3272cfdb8794b69586">mcopt::PayoffCall</a>, <a class="el" href="classmcopt_1_1PayoffPut.html#a6a2c3bba7effa80bf986fceb110b6d32">mcopt::PayoffPut</a>, and <a class="el" href="classmcopt_1_1PayoffAsianCall.html#a5afd4344adfdd4ae53539987e228b878">mcopt::PayoffAsianCall</a>.</p>
+<p>Implements <a class="el" href="classmcopt_1_1Payoff.html#ac7c578b4a5e1448b7b1a1b86b2480fb2">mcopt::Payoff</a>.</p>
 
 </div>
 </div>
-<a id="a3edc278c7e787cc8a9687dde8e1586fb" name="a3edc278c7e787cc8a9687dde8e1586fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3edc278c7e787cc8a9687dde8e1586fb">&#9670;&#160;</a></span>operator()()</h2>
+<a id="a17c7b614dd8112ff0e888a77d5a9d2ea" name="a17c7b614dd8112ff0e888a77d5a9d2ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17c7b614dd8112ff0e888a77d5a9d2ea">&#9670;&#160;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,7 +167,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual double mcopt::Payoff::operator() </td>
+          <td class="memname">double mcopt::PayoffAsianCall::operator() </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>spot</em></td><td>)</td>
@@ -176,7 +176,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -191,7 +191,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The calculated payoff value. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This method is marked <code>noexcept</code> for optimization purposes in tight loops. </dd></dl>
 
-<p>Implemented in <a class="el" href="classmcopt_1_1PayoffCall.html#a858b988605216cee51c420afb9107909">mcopt::PayoffCall</a>, <a class="el" href="classmcopt_1_1PayoffPut.html#afddb20b193a53f661e582a7f329b9ec8">mcopt::PayoffPut</a>, and <a class="el" href="classmcopt_1_1PayoffAsianCall.html#a17c7b614dd8112ff0e888a77d5a9d2ea">mcopt::PayoffAsianCall</a>.</p>
+<p>Implements <a class="el" href="classmcopt_1_1Payoff.html#a3edc278c7e787cc8a9687dde8e1586fb">mcopt::Payoff</a>.</p>
 
 </div>
 </div>
