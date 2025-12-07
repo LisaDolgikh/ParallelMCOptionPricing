@@ -1,20 +1,23 @@
 cmake_minimum_required(VERSION 3.14)
 project(ParallelMonteCarlo VERSION 1.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# --- Static Analysis Integration ---
-# Пытаемся найти clang-tidy
+# ==========================================
+# FORCE CLANG-TIDY INTEGRATION
+# ==========================================
+# Ищем программу clang-tidy
 find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
 
+# Если нашли - включаем принудительно для всех C++ файлов
 if(CLANG_TIDY_EXE)
-    message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
-    # Если нашли, устанавливаем свойство для всех целей C++
-    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
+    message(STATUS "Run: Clang-Tidy found at ${CLANG_TIDY_EXE}, enabling checks...")
+    # ; -warnings-as-errors=* дублирует настройку из файла, для надежности
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE};-warnings-as-errors=*")
 else()
-    message(WARNING "clang-tidy not found! Static analysis will be skipped.")
+    message(WARNING "Clang-Tidy NOT found! Code analysis disabled.")
 endif()
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # ==========================================
 # 1. Core Library (Движок)
