@@ -11,14 +11,7 @@
 # -modernize-use-trailing-return-type : отключаем требование писать auto func() -> int
 # -readability-magic-numbers : разрешаем использовать числа (например 100.0) без именованных констант
 
-Checks: 'bugprone-*,
-         modernize-*,
-         performance-*,
-         readability-*,
-         cppcoreguidelines-pro-type-cstyle-cast,
-         google-readability-casting,
-         -modernize-use-trailing-return-type,
-         -readability-magic-numbers'
+Checks: 'bugprone-*,modernize-*,performance-*,readability-*,cppcoreguidelines-pro-type-cstyle-cast,google-readability-casting,-modernize-use-trailing-return-type,-readability-magic-numbers'
 
 # Игнорировать предупреждения в сторонних библиотеках (GoogleTest)
 # Анализируем только папку src/
