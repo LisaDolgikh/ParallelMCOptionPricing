@@ -1,22 +1,4 @@
 ---
-# Мы включаем проверки на:
-# bugprone-* : поиск потенциальных багов
-# modernize-* : использование фишек C++17/20
-# performance-* : советы по оптимизации скорости
-# readability-* : советы по читаемости
-# cppcoreguidelines-pro-type-cstyle-cast : ЗАПРЕТ на (int*)0
-# google-readability-casting : стиль приведения типов от Google
-#
-# Отключения (-):
-# -modernize-use-trailing-return-type : отключаем требование писать auto func() -> int
-# -readability-magic-numbers : разрешаем использовать числа (например 100.0) без именованных констант
-
-Checks: 'bugprone-*,modernize-*,performance-*,readability-*,cppcoreguidelines-pro-type-cstyle-cast,google-readability-casting,-modernize-use-trailing-return-type,-readability-magic-numbers'
-
-# Игнорировать предупреждения в сторонних библиотеках (GoogleTest)
-# Анализируем только папку src/
-HeaderFilterRegex: 'src/.*'
-
-# Любое найденное нарушение считается ошибкой и ломает сборку
+Checks: '*'
 WarningsAsErrors: '*'
 ...
