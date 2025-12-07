@@ -31,6 +31,7 @@ int main(int argc, char* argv[]) {
     double sigma = 0.2;
     unsigned long long paths = 1'000'000;
     unsigned int steps = 252;
+    int* bad_pointer = (int*)0;
 
     // Парсинг аргументов
     for (int i = 1; i < argc; ++i) {

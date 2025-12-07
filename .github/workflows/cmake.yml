@@ -27,7 +27,13 @@ jobs:
         sudo apt-get install -y clang-tidy
 
     - name: Configure CMake
-      # -S . (source) -B build (build dir)
+      # Добавляем флаг -DCMAKE_CXX_CLANG_TIDY="clang-tidy" только для Linux (Ubuntu),
+      # так как мы установили инструмент только там.
+      if: matrix.os == 'ubuntu-latest'
+      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_CXX_CLANG_TIDY="clang-tidy"
+      
+    - name: Configure CMake (Windows/Mac)
+      if: matrix.os != 'ubuntu-latest'
       run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
 
     - name: Build
