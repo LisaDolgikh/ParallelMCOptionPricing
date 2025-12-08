@@ -1,6 +1,7 @@
 #include <chrono>
 #include <cmath>
 #include <cstring>
+#include <filesystem>
 #include <iomanip>
 #include <iostream>
 #include <memory>
@@ -9,6 +10,8 @@
 #include "src/Analytical.hpp"
 #include "src/MCEngine.hpp"
 #include "src/Payoff.hpp"
+#include "src/ResultsExporter.hpp"
+namespace fs = std::filesystem;
 
 void printUsage(const char* progName) {
     std::cout << "Usage: " << progName << " [options]\n"
@@ -92,7 +95,11 @@ int main(int argc, char* argv[]) {
     mcopt::MonteCarloEngine engineEur(payoffEur, S0, T, r, sigma, 12345);  // Seed 12345
 
     std::cout << "\n[2. Monte Carlo (European Call)]" << std::endl;
+
+    auto startEur = std::chrono::high_resolution_clock::now();
     auto mcResult = engineEur.calculateGreeks(paths);
+    auto endEur = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diffEur = endEur - startEur;
 
     std::cout << std::fixed << std::setprecision(5);
 
@@ -105,6 +112,20 @@ int main(int argc, char* argv[]) {
     std::cout << std::left << std::setw(8) << "Gamma:" << std::setw(12) << mcResult.gamma
               << "(Error: " << std::abs(mcResult.gamma - exact.gamma) << ")" << std::endl;
 
+    fs::path outputDir = fs::path("..") / "out";
+    // Создаем папку out, если её еще нет if (!fs::exists(outputDir))
+    {
+        fs::create_directories(outputDir);
+    }
+
+    // Полный путь к файлу: ../out/pricing_results.csv
+    std::string csvPath = (outputDir / "pricing_results.csv").string();
+
+    mcopt::ResultsExporter::exportToCSV(csvPath, "European Call", S0, K, T, r, sigma, paths,
+                                        0,  // Steps = 0 для Европейского
+                                        mcResult.price, mcResult.delta, mcResult.gamma,
+                                        diffEur.count());
+
     // ==========================================
     // 3. Monte Carlo (Asian - Path Dependent)
     // ==========================================
@@ -113,19 +134,24 @@ int main(int argc, char* argv[]) {
 
     std::cout << "\n[3. Monte Carlo (Asian Arithmetic Call)]" << std::endl;
 
-    auto start = std::chrono::high_resolution_clock::now();
+    auto startAsian = std::chrono::high_resolution_clock::now();
     double priceAsian = engineAsian.calculateAsianPrice(paths, steps);
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> diff = end - start;
+    auto endAsian = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diffAsian = endAsian - startAsian;
 
     std::cout << std::left << std::setw(8) << "Price:" << std::setw(12) << priceAsian << std::endl;
 
     std::cout << std::left << std::setw(8) << "Time:" << std::setw(12) << std::setprecision(4)
-              << diff.count() << " sec" << std::endl;
+              << diffAsian.count() << " sec" << std::endl;
 
     std::cout << std::setprecision(5);
     std::cout << "Note: Asian Price (" << priceAsian << ") < European Price (" << mcResult.price
               << ") due to volatility averaging effect." << std::endl;
+
+    mcopt::ResultsExporter::exportToCSV(csvPath, "Asian Call", S0, K, T, r, sigma, paths,
+                                        steps,                 // Важно: сохраняем количество шагов
+                                        priceAsian, 0.0, 0.0,  // Delta/Gamma не считались
+                                        diffAsian.count());
 
     return 0;
 }
