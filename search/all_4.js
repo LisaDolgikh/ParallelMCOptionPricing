@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['monte_20carlo_20option_20pricing_0',['Parallel Monte Carlo Option Pricing',['../index.html',1,'']]],
-  ['montecarloengine_1',['montecarloengine',['../classmcopt_1_1MonteCarloEngine.html',1,'mcopt::MonteCarloEngine'],['../classmcopt_1_1MonteCarloEngine.html#a5b2a0a2052af40871fce526ca4d76457',1,'mcopt::MonteCarloEngine::MonteCarloEngine()']]]
+  ['gamma_0',['gamma',['../structmcopt_1_1Greeks.html#adcab265ddc11f19553fb5d79777d6b52',1,'mcopt::Greeks']]],
+  ['greeks_1',['Greeks',['../structmcopt_1_1Greeks.html',1,'mcopt']]]
 ];
