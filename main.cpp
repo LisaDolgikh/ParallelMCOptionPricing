@@ -31,13 +31,6 @@ int main(int argc, char* argv[]) {
     double sigma = 0.2;
     unsigned long long paths = 1'000'000;
     unsigned int steps = 252;
-    // Trigger build
-    double pi = 3.14159;
-    
-    // C-style cast: грубое отбрасывание дробной части.
-    // Clang-Tidy требует писать static_cast<int>(pi)
-    int pi_int = (int)pi;  
-    (void)pi_int;
 
     // Парсинг аргументов
     for (int i = 1; i < argc; ++i) {
