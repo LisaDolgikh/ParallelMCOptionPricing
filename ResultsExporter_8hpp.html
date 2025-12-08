@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Parallel Monte Carlo Option Pricer: File List</title>
+<title>Parallel Monte Carlo Option Pricer: src/ResultsExporter.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -53,7 +53,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -75,21 +74,55 @@ $(function() {
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">File List</div></div>
+  <div class="summary">
+<a href="#nested-classes">Classes</a>  </div>
+  <div class="headertitle"><div class="title">ResultsExporter.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all documented files with brief descriptions:</div><div class="directory">
-<div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span>]</div><table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="toggleFolder('0_')">&#9660;</span><span id="img_0_" class="iconfopen" onclick="toggleFolder('0_')">&#160;</span><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html" target="_self">src</a></td><td class="desc"></td></tr>
-<tr id="row_0_0_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="Analytical_8hpp_source.html"><span class="icondoc"></span></a><b>Analytical.hpp</b></td><td class="desc"></td></tr>
-<tr id="row_0_1_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="Constants_8hpp_source.html"><span class="icondoc"></span></a><b>Constants.hpp</b></td><td class="desc"></td></tr>
-<tr id="row_0_2_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="MCEngine_8hpp_source.html"><span class="icondoc"></span></a><b>MCEngine.hpp</b></td><td class="desc"></td></tr>
-<tr id="row_0_3_" class="even"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="Payoff_8hpp_source.html"><span class="icondoc"></span></a><b>Payoff.hpp</b></td><td class="desc"></td></tr>
-<tr id="row_0_4_" class="odd"><td class="entry"><span style="width:32px;display:inline-block;">&#160;</span><a href="ResultsExporter_8hpp_source.html"><span class="icondoc"></span></a><a class="el" href="ResultsExporter_8hpp.html" target="_self">ResultsExporter.hpp</a></td><td class="desc">Заголовочный файл для экспорта результатов </td></tr>
+
+<p>Заголовочный файл для экспорта результатов.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;filesystem&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;iomanip&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for ResultsExporter.hpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="ResultsExporter_8hpp__incl.png" border="0" usemap="#asrc_2ResultsExporter_8hpp" alt=""/></div>
+<map name="asrc_2ResultsExporter_8hpp" id="asrc_2ResultsExporter_8hpp">
+<area shape="rect" title="Заголовочный файл для экспорта результатов." alt="" coords="169,5,343,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,96,104"/>
+<area shape="poly" title=" " alt="" coords="224,33,98,77,96,72,222,28"/>
+<area shape="rect" title=" " alt="" coords="121,79,194,104"/>
+<area shape="poly" title=" " alt="" coords="242,33,186,73,183,68,239,29"/>
+<area shape="rect" title=" " alt="" coords="219,79,293,104"/>
+<area shape="poly" title=" " alt="" coords="259,31,259,65,253,65,253,31"/>
+<area shape="rect" title=" " alt="" coords="317,79,397,104"/>
+<area shape="poly" title=" " alt="" coords="274,28,331,68,328,73,271,33"/>
+<area shape="rect" title=" " alt="" coords="421,79,480,104"/>
+<area shape="poly" title=" " alt="" coords="288,28,409,72,407,77,286,33"/>
+</map>
+</div>
+</div>
+<p><a href="ResultsExporter_8hpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmcopt_1_1ResultsExporter.html">mcopt::ResultsExporter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Класс для сохранения результатов расчетов в CSV. Поддерживает Европейские и Азиатские опционы.  <a href="classmcopt_1_1ResultsExporter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- directory -->
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Заголовочный файл для экспорта результатов. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
