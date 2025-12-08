@@ -6,6 +6,11 @@
 #include <iostream>
 #include <string>
 
+/**
+ * @file ResultsExporter.hpp
+ * @brief Заголовочный файл для экспорта результатов.
+ */
+
 namespace mcopt {
 
 /**
