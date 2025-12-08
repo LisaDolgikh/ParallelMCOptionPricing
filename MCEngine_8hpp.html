@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Parallel Monte Carlo Option Pricer: src Directory Reference</title>
+<title>Parallel Monte Carlo Option Pricer: src/MCEngine.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,29 +80,53 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">src Directory Reference</div></div>
+  <div class="summary">
+<a href="#nested-classes">Classes</a>  </div>
+  <div class="headertitle"><div class="title">MCEngine.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Основной класс движка Монте-Карло.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="Analytical_8hpp_source.html">Analytical.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Payoff_8hpp_source.html">Payoff.hpp</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for MCEngine.hpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="MCEngine_8hpp__incl.png" border="0" usemap="#asrc_2MCEngine_8hpp" alt=""/></div>
+<map name="asrc_2MCEngine_8hpp" id="asrc_2MCEngine_8hpp">
+<area shape="rect" title="Основной класс движка Монте&#45;Карло." alt="" coords="157,5,296,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,83,104"/>
+<area shape="poly" title=" " alt="" coords="198,33,88,76,86,71,196,28"/>
+<area shape="rect" title=" " alt="" coords="107,79,171,104"/>
+<area shape="poly" title=" " alt="" coords="214,33,165,72,162,68,211,29"/>
+<area shape="rect" title=" " alt="" coords="195,79,258,104"/>
+<area shape="poly" title=" " alt="" coords="229,31,229,65,224,65,224,31"/>
+<area shape="rect" href="Analytical_8hpp.html" title="Аналитические формулы оценки опционов." alt="" coords="283,79,397,104"/>
+<area shape="poly" title=" " alt="" coords="246,28,312,69,309,74,243,33"/>
+<area shape="rect" href="Payoff_8hpp.html" title="Иерархия классов для расчета выплат (Strategy Pattern)." alt="" coords="421,79,512,104"/>
+<area shape="poly" title=" " alt="" coords="266,28,415,72,414,77,264,33"/>
+<area shape="rect" title=" " alt="" coords="376,152,461,177"/>
+<area shape="poly" title=" " alt="" coords="461,106,436,142,432,139,457,103"/>
+<area shape="rect" title=" " alt="" coords="485,152,544,177"/>
+<area shape="poly" title=" " alt="" coords="477,103,502,139,497,142,472,106"/>
+</map>
+</div>
+</div>
+<p><a href="MCEngine_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="Analytical_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Analytical_8hpp.html">Analytical.hpp</a></td></tr>
-<tr class="memdesc:Analytical_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Аналитические формулы оценки опционов. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="Constants_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Constants_8hpp.html">Constants.hpp</a></td></tr>
-<tr class="memdesc:Constants_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Глобальные математические константы. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="MCEngine_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="MCEngine_8hpp.html">MCEngine.hpp</a></td></tr>
-<tr class="memdesc:MCEngine_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Основной класс движка Монте-Карло. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="Payoff_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Payoff_8hpp.html">Payoff.hpp</a></td></tr>
-<tr class="memdesc:Payoff_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Иерархия классов для расчета выплат (Strategy Pattern). <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="ResultsExporter_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ResultsExporter_8hpp.html">ResultsExporter.hpp</a></td></tr>
-<tr class="memdesc:ResultsExporter_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Заголовочный файл для экспорта результатов. <br /></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmcopt_1_1MonteCarloEngine.html">mcopt::MonteCarloEngine</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">High-performance parallel Monte Carlo pricing engine.  <a href="classmcopt_1_1MonteCarloEngine.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Основной класс движка Монте-Карло. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

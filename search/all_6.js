@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name_0',['name',['../classmcopt_1_1Payoff.html#ac7c578b4a5e1448b7b1a1b86b2480fb2',1,'mcopt::Payoff::name()'],['../classmcopt_1_1PayoffCall.html#ab79e5059c93e3c3272cfdb8794b69586',1,'mcopt::PayoffCall::name()'],['../classmcopt_1_1PayoffPut.html#a6a2c3bba7effa80bf986fceb110b6d32',1,'mcopt::PayoffPut::name()'],['../classmcopt_1_1PayoffAsianCall.html#a5afd4344adfdd4ae53539987e228b878',1,'mcopt::PayoffAsianCall::name()']]]
+  ['inv_5fsqrt_5f2pi_0',['INV_SQRT_2PI',['../Constants_8hpp.html#a1a6a647fd3f24005c48251e7d576080d',1,'mcopt::math']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Parallel Monte Carlo Option Pricer: src Directory Reference</title>
+<title>Parallel Monte Carlo Option Pricer: src/Constants.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,29 +80,36 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">src Directory Reference</div></div>
+  <div class="summary">
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">Constants.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Глобальные математические константы.  
+<a href="#details">More...</a></p>
+
+<p><a href="Constants_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="Analytical_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Analytical_8hpp.html">Analytical.hpp</a></td></tr>
-<tr class="memdesc:Analytical_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Аналитические формулы оценки опционов. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="Constants_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Constants_8hpp.html">Constants.hpp</a></td></tr>
-<tr class="memdesc:Constants_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Глобальные математические константы. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="MCEngine_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="MCEngine_8hpp.html">MCEngine.hpp</a></td></tr>
-<tr class="memdesc:MCEngine_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Основной класс движка Монте-Карло. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="Payoff_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Payoff_8hpp.html">Payoff.hpp</a></td></tr>
-<tr class="memdesc:Payoff_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Иерархия классов для расчета выплат (Strategy Pattern). <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="ResultsExporter_8hpp_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ResultsExporter_8hpp.html">ResultsExporter.hpp</a></td></tr>
-<tr class="memdesc:ResultsExporter_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Заголовочный файл для экспорта результатов. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a8d12ef9e0975aa55d54507ec3946bf6c" id="r_a8d12ef9e0975aa55d54507ec3946bf6c"><td class="memItemLeft" align="right" valign="top"><a id="a8d12ef9e0975aa55d54507ec3946bf6c" name="a8d12ef9e0975aa55d54507ec3946bf6c"></a>
+constexpr double&#160;</td><td class="memItemRight" valign="bottom"><b>mcopt::math::PI</b> = 3.14159265358979323846</td></tr>
+<tr class="memdesc:a8d12ef9e0975aa55d54507ec3946bf6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Число Пи ( \( \pi \)) с высокой точностью. <br /></td></tr>
+<tr class="separator:a8d12ef9e0975aa55d54507ec3946bf6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a6a647fd3f24005c48251e7d576080d" id="r_a1a6a647fd3f24005c48251e7d576080d"><td class="memItemLeft" align="right" valign="top"><a id="a1a6a647fd3f24005c48251e7d576080d" name="a1a6a647fd3f24005c48251e7d576080d"></a>
+constexpr double&#160;</td><td class="memItemRight" valign="bottom"><b>mcopt::math::INV_SQRT_2PI</b> = 0.39894228040143267794</td></tr>
+<tr class="memdesc:a1a6a647fd3f24005c48251e7d576080d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обратный корень из 2 пи ( \( 1 / \sqrt{2\pi} \)). Используется в функции плотности нормального распределения (PDF). <br /></td></tr>
+<tr class="separator:a1a6a647fd3f24005c48251e7d576080d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c09f5a7aec1a1510f22915bf284536b" id="r_a0c09f5a7aec1a1510f22915bf284536b"><td class="memItemLeft" align="right" valign="top"><a id="a0c09f5a7aec1a1510f22915bf284536b" name="a0c09f5a7aec1a1510f22915bf284536b"></a>
+constexpr double&#160;</td><td class="memItemRight" valign="bottom"><b>mcopt::math::SQRT2</b> = 1.41421356237309504880</td></tr>
+<tr class="memdesc:a0c09f5a7aec1a1510f22915bf284536b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Корень из 2 ( \( \sqrt{2} \)). Используется в функции <code>std::erfc</code> для CDF. <br /></td></tr>
+<tr class="separator:a0c09f5a7aec1a1510f22915bf284536b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Глобальные математические константы. </p>
+<p>Используются <code>constexpr</code> для вычислений на этапе компиляции. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

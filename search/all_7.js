@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['operator_28_29_0',['operator()',['../classmcopt_1_1Payoff.html#a3edc278c7e787cc8a9687dde8e1586fb',1,'mcopt::Payoff::operator()()'],['../classmcopt_1_1PayoffCall.html#a858b988605216cee51c420afb9107909',1,'mcopt::PayoffCall::operator()()'],['../classmcopt_1_1PayoffPut.html#afddb20b193a53f661e582a7f329b9ec8',1,'mcopt::PayoffPut::operator()()'],['../classmcopt_1_1PayoffAsianCall.html#a17c7b614dd8112ff0e888a77d5a9d2ea',1,'mcopt::PayoffAsianCall::operator()()']]],
-  ['option_20pricing_1',['Parallel Monte Carlo Option Pricing',['../index.html',1,'']]]
+  ['mcengine_2ehpp_0',['MCEngine.hpp',['../MCEngine_8hpp.html',1,'']]],
+  ['monte_20carlo_20option_20pricing_1',['Parallel Monte Carlo Option Pricing',['../index.html',1,'']]],
+  ['montecarloengine_2',['montecarloengine',['../classmcopt_1_1MonteCarloEngine.html',1,'mcopt::MonteCarloEngine'],['../classmcopt_1_1MonteCarloEngine.html#a5b2a0a2052af40871fce526ca4d76457',1,'mcopt::MonteCarloEngine::MonteCarloEngine()']]]
 ];

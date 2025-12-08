@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resultsexporter_2ehpp_0',['ResultsExporter.hpp',['../ResultsExporter_8hpp.html',1,'']]]
+  ['analytical_2ehpp_0',['Analytical.hpp',['../Analytical_8hpp.html',1,'']]]
 ];

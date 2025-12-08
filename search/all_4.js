@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['gamma_0',['gamma',['../structmcopt_1_1Greeks.html#adcab265ddc11f19553fb5d79777d6b52',1,'mcopt::Greeks']]],
-  ['greeks_1',['Greeks',['../structmcopt_1_1Greeks.html',1,'mcopt']]]
+  ['exporttocsv_0',['exportToCSV',['../classmcopt_1_1ResultsExporter.html#a2d48a1d36db563ded06816f5a07bc0b5',1,'mcopt::ResultsExporter']]]
 ];

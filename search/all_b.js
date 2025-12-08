@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['задачи_0',['Описание задачи',['../index.html#autotoc_md1',1,'']]],
-  ['запуску_1',['Инструкция по сборке и запуску',['../index.html#autotoc_md3',1,'']]]
+  ['resultsexporter_0',['ResultsExporter',['../classmcopt_1_1ResultsExporter.html',1,'mcopt']]],
+  ['resultsexporter_2ehpp_1',['ResultsExporter.hpp',['../ResultsExporter_8hpp.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['blackscholesanalytical_0',['BlackScholesAnalytical',['../classmcopt_1_1BlackScholesAnalytical.html',1,'mcopt']]]
+  ['analytical_2ehpp_0',['Analytical.hpp',['../Analytical_8hpp.html',1,'']]]
 ];

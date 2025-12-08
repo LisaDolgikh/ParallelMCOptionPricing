@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['price_0',['price',['../structmcopt_1_1Greeks.html#ad66064a9f2aa1f8daf194cb2f1976666',1,'mcopt::Greeks']]]
+  ['inv_5fsqrt_5f2pi_0',['INV_SQRT_2PI',['../Constants_8hpp.html#a1a6a647fd3f24005c48251e7d576080d',1,'mcopt::math']]]
 ];
