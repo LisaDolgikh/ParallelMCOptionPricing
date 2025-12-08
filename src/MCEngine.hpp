@@ -7,6 +7,11 @@
 #include "Analytical.hpp"
 #include "Payoff.hpp"
 
+/**
+ * @file MCEngine.hpp
+ * @brief Основной класс движка Монте-Карло.
+ */
+
 namespace mcopt {
 
 /**

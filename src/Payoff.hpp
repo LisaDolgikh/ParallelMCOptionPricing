@@ -3,6 +3,11 @@
 #include <algorithm>  // std::max
 #include <string>
 
+/**
+ * @file Payoff.hpp
+ * @brief Иерархия классов для расчета выплат (Strategy Pattern).
+ */
+
 namespace mcopt {
 
 /**

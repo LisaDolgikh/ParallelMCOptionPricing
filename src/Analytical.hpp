@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @file Analytical.hpp
+ * @brief Аналитические формулы оценки опционов.
+ */
+
 namespace mcopt {
 
 /**
