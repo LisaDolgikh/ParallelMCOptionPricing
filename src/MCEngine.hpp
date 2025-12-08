@@ -8,6 +8,18 @@
 #include "Payoff.hpp"
 
 /**
+ * @namespace mcopt
+ * @brief Основное пространство имен библиотеки Parallel Monte Carlo.
+ *
+ * Содержит все компоненты для оценки опционов:
+ * - Движки симуляции (MonteCarloEngine)
+ * - Аналитические формулы (BlackScholesAnalytical)
+ * - Стратегии выплат (Payoff)
+ * * @example main.cpp
+ * Пример использования движка для оценки европейского и азиатского опционов.
+ */
+
+/**
  * @file MCEngine.hpp
  * @brief Основной класс движка Монте-Карло.
  */
