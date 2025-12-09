@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inv_5fsqrt_5f2pi_0',['INV_SQRT_2PI',['../Constants_8hpp.html#a1a6a647fd3f24005c48251e7d576080d',1,'mcopt::math']]]
+  ['delta_0',['delta',['../structmcopt_1_1Greeks.html#a5ca3ac370e65dadcad8a02cf4a595afc',1,'mcopt::Greeks']]]
 ];

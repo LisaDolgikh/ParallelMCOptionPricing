@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['delta_0',['delta',['../structmcopt_1_1Greeks.html#a5ca3ac370e65dadcad8a02cf4a595afc',1,'mcopt::Greeks']]]
+  ['analytical_2ehpp_0',['Analytical.hpp',['../Analytical_8hpp.html',1,'']]],
+  ['app_1',['1. Основное приложение (Pricing App)',['../index.html#autotoc_md8',1,'']]]
 ];

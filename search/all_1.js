@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['blackscholesanalytical_0',['BlackScholesAnalytical',['../classmcopt_1_1BlackScholesAnalytical.html',1,'mcopt']]]
+  ['2_20бенчмарк_20производительности_20benchmark_0',['2. Бенчмарк производительности (Benchmark)',['../index.html#autotoc_md9',1,'']]],
+  ['2_20запуск_20компонентов_1',['2. Запуск компонентов',['../index.html#autotoc_md7',1,'']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['analytical_2ehpp_0',['Analytical.hpp',['../Analytical_8hpp.html',1,'']]]
+  ['1_20конфигурация_20и_20сборка_0',['1. Конфигурация и Сборка',['../index.html#autotoc_md6',1,'']]],
+  ['1_20основное_20приложение_20pricing_20app_1',['1. Основное приложение (Pricing App)',['../index.html#autotoc_md8',1,'']]]
 ];

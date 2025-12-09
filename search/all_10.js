@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['описание_20задачи_0',['Описание задачи',['../index.html#autotoc_md1',1,'']]]
+  ['tests_0',['3. Модульные тесты (Unit Tests)',['../index.html#autotoc_md10',1,'']]]
 ];

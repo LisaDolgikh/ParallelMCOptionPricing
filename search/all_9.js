@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['operator_28_29_0',['operator()',['../classmcopt_1_1Payoff.html#a3edc278c7e787cc8a9687dde8e1586fb',1,'mcopt::Payoff::operator()()'],['../classmcopt_1_1PayoffCall.html#a858b988605216cee51c420afb9107909',1,'mcopt::PayoffCall::operator()()'],['../classmcopt_1_1PayoffPut.html#afddb20b193a53f661e582a7f329b9ec8',1,'mcopt::PayoffPut::operator()()'],['../classmcopt_1_1PayoffAsianCall.html#a17c7b614dd8112ff0e888a77d5a9d2ea',1,'mcopt::PayoffAsianCall::operator()()']]],
-  ['option_20pricing_1',['Parallel Monte Carlo Option Pricing',['../index.html',1,'']]],
-  ['optiontype_2',['OptionType',['../namespacemcopt.html#a2cba6edeecc3504c1742b5998d4dbf26',1,'mcopt']]]
+  ['inv_5fsqrt_5f2pi_0',['INV_SQRT_2PI',['../Constants_8hpp.html#a1a6a647fd3f24005c48251e7d576080d',1,'mcopt::math']]]
 ];
