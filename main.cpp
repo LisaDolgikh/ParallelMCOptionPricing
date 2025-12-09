@@ -112,7 +112,7 @@ int main(int argc, char* argv[]) {
     std::cout << std::left << std::setw(8) << "Gamma:" << std::setw(12) << mcResult.gamma
               << "(Error: " << std::abs(mcResult.gamma - exact.gamma) << ")" << std::endl;
 
-    fs::path outputDir = fs::path("..") / "out";
+    fs::path outputDir = "out";
     // Создаем папку out, если её еще нет if (!fs::exists(outputDir))
     {
         fs::create_directories(outputDir);
