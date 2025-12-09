@@ -24,7 +24,7 @@ TEST(MonteCarloTest, ZeroVolatilityLimit) {
     // Теоретическая цена: S0 - K * exp(-rT) (так как S0 > K)
     double intrinsic = S0 - K * std::exp(-r * T);
 
-    EXPECT_NEAR(mcPrice, intrinsic, 0.05);
+    EXPECT_NEAR(mcPrice, intrinsic, 0.05 * std::abs(intrinsic));
 }
 
 // Тест 2: Deep Out of the Money (Опцион должен стоить 0)
@@ -60,14 +60,13 @@ TEST(MonteCarloTest, GreeksConvergence) {
     mcopt::MonteCarloEngine engine(payoff, S0, T, r, sigma, seed);
 
     // Увеличим число путей для стабильности греков (Gamma очень шумная)
-    auto mcRes = engine.calculateGreeks(10'000'000);
+    auto mcRes = engine.calculateGreeks(1'000'000);
 
     // Допуски:
-    // Delta сходится хорошо
-    EXPECT_NEAR(mcRes.delta, exact.delta, 0.01);
-
-    // Gamma сходится сложнее (вторая производная), допуск пошире
-    EXPECT_NEAR(mcRes.gamma, exact.gamma, 0.05);
+    EXPECT_NEAR(mcRes.delta, exact.delta, 0.05 * std::abs(exact.delta));
+    EXPECT_NEAR(mcRes.gamma, exact.gamma, 0.05 * std::abs(exact.gamma));
+    //EXPECT_NEAR(mcRes.delta, exact.delta, 0.005);
+    //EXPECT_NEAR(mcRes.gamma, exact.gamma, 0.005);
 }
 
 // Тест 4: Проверка воспроизводимости

@@ -1,6 +1,4 @@
 build/
-out/
-
 docs/
 cmake-build-debug/
 .idea/
